@@ -7,13 +7,12 @@
         <div class="logo-subtitle">fan project archive</div>
       </div>
 
-      <nav class="nav-menu">
-        <a class="nav-item active" href="#">Home</a>
-        <a class="nav-item" href="#">Works</a>
-        <a class="nav-item" href="#">Favorites</a>
-        <a class="nav-item" href="#">Community</a>
-        <a class="nav-item" href="#">Admin</a>
-      </nav>
+    <nav class="nav-menu">
+      <router-link class="nav-item active" to="/">Home</router-link>
+      <router-link class="nav-item" to="/works">Works</router-link>
+      <a class="nav-item" href="#">Favorites</a>
+      <a class="nav-item" href="#">Community</a>
+    </nav>
 
       <div class="header-actions">
         <div class="search-box">
@@ -262,15 +261,15 @@
         <a href="#">Admin</a>
       </div>
 
-      <div class="footer-social">
-        <h4>CONNECT</h4>
-        <div class="social-icons">
-          <span>◎</span>
-          <span>𝕏</span>
-          <span>▶</span>
-          <span>◉</span>
-        </div>
-      </div>
+ <div class="footer-social">
+  <h4>CONNECT</h4>
+  <div class="social-icons">
+    <a href="#" class="social-icon">IG</a>
+    <a href="#" class="social-icon">X</a>
+    <a href="#" class="social-icon">YT</a>
+    <a href="#" class="social-icon">DC</a>
+  </div>
+</div>
 
       <div class="footer-disclaimer">
         <h4>DISCLAIMER</h4>
@@ -1175,9 +1174,32 @@ const playlistTracks = [
 
 .social-icons {
   display: flex;
-  gap: 16px;
+  align-items: center;
+  gap: 12px;
+}
+
+.social-icon {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(244, 217, 163, 0.38);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: #f5ead4;
-  font-size: 20px;
+  background: rgba(255, 255, 255, 0.035);
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  transition: 0.25s;
+}
+
+.social-icon:hover {
+  color: #15110a;
+  background: linear-gradient(135deg, #f7e7c0, #c79f5b);
+  transform: translateY(-2px);
 }
 
 .footer-disclaimer p {
