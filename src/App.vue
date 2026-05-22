@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <h1>AGUSTD Music Archive</h1>
-    <p>项目创建成功，接下来开始开发首页。</p>
+    <p>项目初始化成功，接下来开始开发首页。</p>
   </div>
 </template>
 
@@ -19,5 +19,10 @@
 h1 {
   font-size: 56px;
   margin-bottom: 16px;
+}
+
+p {
+  font-size: 20px;
+  color: #c9b88f;
 }
 </style>
