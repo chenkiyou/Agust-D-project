@@ -403,7 +403,7 @@ const albums = [
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 28%;
+  object-position: center 10%;
 }
 
 .hero-mask {
@@ -538,7 +538,7 @@ const albums = [
   display: grid;
   grid-template-columns: 1fr 1.45fr 1.2fr;
   gap: 22px;
-  margin-top: 12px;
+  margin-top: 22px;
 }
 
 .panel {
