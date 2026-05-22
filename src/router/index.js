@@ -5,6 +5,7 @@ import Works from '../views/Works.vue'
 import Detail from '../views/Detail.vue'
 import Login from '../views/Login.vue'
 import Favorites from '../views/Favorites.vue'
+import Community from '../views/Community.vue'
 
 const routes = [
   {
@@ -31,6 +32,11 @@ const routes = [
     path: '/favorites',
     name: 'Favorites',
     component: Favorites,
+  },
+  {
+    path: '/community',
+    name: 'Community',
+    component: Community,
   },
 ]
 

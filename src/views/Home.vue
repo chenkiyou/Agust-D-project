@@ -11,7 +11,7 @@
       <router-link class="nav-item active" to="/">Home</router-link>
       <router-link class="nav-item" to="/works">Works</router-link>
       <router-link class="nav-item" to="/favorites">Favorites</router-link>
-      <a class="nav-item" href="#">Community</a>
+      <router-link class="nav-item" to="/community">Community</router-link>
     </nav>
 
       <div class="header-actions">
