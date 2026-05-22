@@ -209,7 +209,9 @@
                 <button>♡</button>
               </div>
 
-              <button class="details-btn">View Details</button>
+              <router-link class="details-btn" :to="`/works/${work.id}`">
+                     View Details
+                </router-link>
             </div>
           </article>
         </section>
@@ -962,6 +964,11 @@ function getCategoryCount(category) {
   background: transparent;
   color: #f4d9a3;
   cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
 }
 
 .details-btn:hover {
