@@ -10,7 +10,7 @@
     <nav class="nav-menu">
       <router-link class="nav-item active" to="/">Home</router-link>
       <router-link class="nav-item" to="/works">Works</router-link>
-      <a class="nav-item" href="#">Favorites</a>
+      <router-link class="nav-item" to="/favorites">Favorites</router-link>
       <a class="nav-item" href="#">Community</a>
     </nav>
 

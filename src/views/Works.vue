@@ -10,7 +10,7 @@
       <nav class="nav-menu">
         <router-link class="nav-item" to="/">Home</router-link>
         <router-link class="nav-item active" to="/works">Works</router-link>
-        <a class="nav-item" href="#">Favorites</a>
+        <router-link class="nav-item" to="/favorites">Favorites</router-link>
         <a class="nav-item" href="#">Community</a>
       </nav>
 
@@ -211,7 +211,13 @@
               <div class="work-data">
                 <span>▷ {{ work.plays }}</span>
                 <span>☆ {{ work.rating }}</span>
-                <button>♡</button>
+               <button
+                class="heart-btn"
+                :class="{ active: isFavorite(work.id) }"
+                @click="toggleFavorite(work.id)"
+                >
+                {{ isFavorite(work.id) ? '♥' : '♡' }}
+                </button>
               </div>
 
               <router-link class="details-btn" :to="`/works/${work.id}`">
@@ -272,6 +278,7 @@
 
 <script setup>
 import { computed, onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 import albumDday from '../assets/images/album-dday.png'
 import albumAgustd from '../assets/images/album-agustd.png'
@@ -292,9 +299,16 @@ const categories = ['All', 'Solo Work', 'Mixtape', 'Collaboration', 'Soundtrack'
 const moods = ['All', 'Dark', 'Chill', 'Energetic', 'Reflective', 'Hopeful']
 
 const currentUser = ref(null)
+const router = useRouter()
+const favoriteIds = ref([])
 
 onMounted(() => {
   const savedUser = localStorage.getItem('agust_user')
+  const savedFavorites = localStorage.getItem('agust_favorites')
+
+if (savedFavorites) {
+  favoriteIds.value = JSON.parse(savedFavorites)
+}
 
   if (savedUser) {
     currentUser.value = JSON.parse(savedUser)
@@ -446,7 +460,24 @@ const sortedWorks = computed(() => {
 
   return list.sort((a, b) => b.year - a.year)
 })
+function isFavorite(id) {
+  return favoriteIds.value.includes(id)
+}
 
+function toggleFavorite(id) {
+  if (!currentUser.value) {
+    router.push('/login')
+    return
+  }
+
+  if (favoriteIds.value.includes(id)) {
+    favoriteIds.value = favoriteIds.value.filter((itemId) => itemId !== id)
+  } else {
+    favoriteIds.value.push(id)
+  }
+
+  localStorage.setItem('agust_favorites', JSON.stringify(favoriteIds.value))
+}
 function getCategoryCount(category) {
   if (category === 'All') {
     return works.length
@@ -464,6 +495,19 @@ function getCategoryCount(category) {
     #050505;
   color: #f5ead4;
   padding: 0 32px 48px;
+}
+
+.heart-btn {
+  margin-left: auto;
+  border: none;
+  background: transparent;
+  color: #f4d9a3;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.heart-btn.active {
+  color: #f7e7c0;
 }
 
 /* Header */

@@ -10,7 +10,7 @@
       <nav class="nav-menu">
         <router-link class="nav-item" to="/">Home</router-link>
         <router-link class="nav-item active" to="/works">Works</router-link>
-        <a class="nav-item" href="#">Favorites</a>
+        <router-link class="nav-item" to="/favorites">Favorites</router-link>
         <a class="nav-item" href="#">Community</a>
       </nav>
 
@@ -55,7 +55,9 @@
 
         <div class="action-row">
           <button class="primary-btn">▶ Play All</button>
-          <button class="outline-btn">♡ Add to Favorites</button>
+          <button class="outline-btn" @click="toggleFavorite(work.id)">
+            {{ isFavorite(work.id) ? '♥ Added to Favorites' : '♡ Add to Favorites' }}
+            </button>
           <button class="circle-btn">···</button>
         </div>
 
@@ -163,7 +165,7 @@
 
 <script setup>
 import { computed, onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 import albumDday from '../assets/images/album-dday.png'
 import albumAgustd from '../assets/images/album-agustd.png'
@@ -175,11 +177,18 @@ import trackDaechwita from '../assets/images/track-daechwita.png'
 import trackPeople from '../assets/images/track-people-pt2.png'
 import trackAmygdala from '../assets/images/track-amygdala.png'
 
+const router = useRouter()
+const favoriteIds = ref([])
 const currentUser = ref(null)
 
 onMounted(() => {
   const savedUser = localStorage.getItem('agust_user')
 
+const savedFavorites = localStorage.getItem('agust_favorites')
+
+if (savedFavorites) {
+  favoriteIds.value = JSON.parse(savedFavorites)
+}
   if (savedUser) {
     currentUser.value = JSON.parse(savedUser)
   }
@@ -347,6 +356,25 @@ const works = [
     ],
   },
 ]
+
+function isFavorite(id) {
+  return favoriteIds.value.includes(id)
+}
+
+function toggleFavorite(id) {
+  if (!currentUser.value) {
+    router.push('/login')
+    return
+  }
+
+  if (favoriteIds.value.includes(id)) {
+    favoriteIds.value = favoriteIds.value.filter((itemId) => itemId !== id)
+  } else {
+    favoriteIds.value.push(id)
+  }
+
+  localStorage.setItem('agust_favorites', JSON.stringify(favoriteIds.value))
+}
 
 const currentId = computed(() => Number(route.params.id))
 

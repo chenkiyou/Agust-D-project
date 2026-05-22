@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Works from '../views/Works.vue'
 import Detail from '../views/Detail.vue'
 import Login from '../views/Login.vue'
+import Favorites from '../views/Favorites.vue'
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login,
+  },
+  {
+    path: '/favorites',
+    name: 'Favorites',
+    component: Favorites,
   },
 ]
 
