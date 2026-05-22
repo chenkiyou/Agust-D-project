@@ -24,7 +24,12 @@
           <span>⌕</span>
         </div>
 
-        <button class="login-btn">Login</button>
+        <div v-if="currentUser" class="user-actions">
+        <span class="user-name">Hi, {{ currentUser.username }}</span>
+        <button class="logout-btn" @click="handleLogout">Logout</button>
+        </div>
+
+        <router-link v-else class="login-btn" to="/login">Login</router-link>
       </div>
     </header>
 
@@ -266,7 +271,7 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 import albumDday from '../assets/images/album-dday.png'
 import albumAgustd from '../assets/images/album-agustd.png'
@@ -286,6 +291,20 @@ const sortType = ref('newest')
 const categories = ['All', 'Solo Work', 'Mixtape', 'Collaboration', 'Soundtrack']
 const moods = ['All', 'Dark', 'Chill', 'Energetic', 'Reflective', 'Hopeful']
 
+const currentUser = ref(null)
+
+onMounted(() => {
+  const savedUser = localStorage.getItem('agust_user')
+
+  if (savedUser) {
+    currentUser.value = JSON.parse(savedUser)
+  }
+})
+
+function handleLogout() {
+  localStorage.removeItem('agust_user')
+  currentUser.value = null
+}
 const works = [
   {
     id: 1,
@@ -547,6 +566,10 @@ function getCategoryCount(category) {
   color: #15110a;
   font-weight: 700;
   cursor: pointer;
+  text-decoration: none;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
 }
 
 /* Shell */
@@ -980,6 +1003,41 @@ function getCategoryCount(category) {
   margin: 40px 0;
   text-align: center;
   color: #b9a77c;
+}
+
+.user-actions {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-name {
+  height: 42px;
+  padding: 0 18px;
+  border: 1px solid rgba(244, 217, 163, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.035);
+  color: #f5ead4;
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.logout-btn {
+  height: 42px;
+  padding: 0 22px;
+  border: 1px solid rgba(244, 217, 163, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #f4d9a3;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  color: #15110a;
+  background: linear-gradient(135deg, #f7e7c0, #c79f5b);
 }
 
 /* Pagination */
