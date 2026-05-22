@@ -187,6 +187,99 @@
         </div>
       </section>
     </section>
+
+        <!-- 精选歌单区域 -->
+    <section class="playlist-section">
+      <div class="playlist-card">
+        <div class="playlist-left">
+          <div class="playlist-title-row">
+            <span class="music-icon">♪</span>
+            <h2>Featured Playlist</h2>
+          </div>
+
+          <div class="playlist-info">
+            <img
+              :src="playlistMidnight"
+              alt="Midnight in Seoul"
+              class="playlist-cover"
+            />
+
+            <div>
+              <h3>Midnight in Seoul</h3>
+              <p>
+                A late-night playlist for quiet thoughts and loud dreams.
+              </p>
+
+              <button class="playlist-play-btn">▶ Play Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="playlist-tracks">
+          <div
+            v-for="track in playlistTracks"
+            :key="track.id"
+            class="playlist-track"
+          >
+            <span class="playlist-track-id">{{ track.id }}</span>
+            <strong>{{ track.title }}</strong>
+            <span>{{ track.artist }}</span>
+            <em>{{ track.duration }}</em>
+          </div>
+        </div>
+
+        <div class="vinyl-box">
+          <div class="vinyl-record">
+            <div class="vinyl-center">
+              <span>AGUST D</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 底部区域 -->
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <div class="footer-logo">AGUST D</div>
+        <p>fan project archive</p>
+      </div>
+
+      <div class="footer-quote">
+        <p>
+          “I don’t do music to be famous.<br />
+          I do it because I need to.”
+        </p>
+        <span>— Agust D</span>
+      </div>
+
+      <div class="footer-links">
+        <h4>SITE</h4>
+        <a href="#">Home</a>
+        <a href="#">Works</a>
+        <a href="#">Favorites</a>
+        <a href="#">Community</a>
+        <a href="#">Admin</a>
+      </div>
+
+      <div class="footer-social">
+        <h4>CONNECT</h4>
+        <div class="social-icons">
+          <span>◎</span>
+          <span>𝕏</span>
+          <span>▶</span>
+          <span>◉</span>
+        </div>
+      </div>
+
+      <div class="footer-disclaimer">
+        <h4>DISCLAIMER</h4>
+        <p>
+          This is a fan-made project for educational and non-profit purposes.
+          All rights belong to their respective owners.
+        </p>
+      </div>
+    </footer>
   </main>
 </template>
 
@@ -202,6 +295,7 @@ import trackHaegeum from '../assets/images/track-haegeum.png'
 import trackDaechwita from '../assets/images/track-daechwita.png'
 import trackPeople from '../assets/images/track-people-pt2.png'
 import trackAmygdala from '../assets/images/track-amygdala.png'
+import playlistMidnight from '../assets/images/playlist-midnight-seoul.png'
 
 const popularTracks = [
   {
@@ -266,6 +360,33 @@ const albums = [
     year: '2023',
     type: 'Live Album',
     cover: albumTour,
+  },
+]
+
+const playlistTracks = [
+  {
+    id: '01',
+    title: 'SDL',
+    artist: 'Agust D',
+    duration: '3:36',
+  },
+  {
+    id: '02',
+    title: 'Snooze',
+    artist: 'Agust D',
+    duration: '4:10',
+  },
+  {
+    id: '03',
+    title: 'Polar Night',
+    artist: 'Agust D',
+    duration: '3:28',
+  },
+  {
+    id: '04',
+    title: 'Interlude: Dawn',
+    artist: 'Agust D',
+    duration: '1:32',
   },
 ]
 </script>
@@ -538,7 +659,7 @@ const albums = [
   display: grid;
   grid-template-columns: 1fr 1.45fr 1.2fr;
   gap: 22px;
-  margin-top: 22px;
+  margin-top: 20px;
 }
 
 .panel {
@@ -809,6 +930,300 @@ const albums = [
   color: #9d927f;
   font-size: 11px;
 }
+
+/* Featured Playlist */
+.playlist-section {
+  margin-top: 22px;
+}
+
+.playlist-card {
+  position: relative;
+  min-height: 142px;
+  border: 1px solid rgba(244, 217, 163, 0.16);
+  border-radius: 22px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 86% 50%, rgba(216, 183, 110, 0.22), transparent 18%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025)),
+    #090909;
+  display: grid;
+  grid-template-columns: 1.15fr 1.85fr 220px;
+  align-items: center;
+  gap: 28px;
+  padding: 22px 26px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+}
+
+.playlist-left {
+  border-right: 1px solid rgba(244, 217, 163, 0.12);
+  padding-right: 26px;
+}
+
+.playlist-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.music-icon {
+  color: #d8b76e;
+  font-size: 22px;
+}
+
+.playlist-title-row h2 {
+  color: #f5ead4;
+  font-size: 20px;
+}
+
+.playlist-info {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.playlist-cover {
+  width: 112px;
+  height: 78px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 1px solid rgba(244, 217, 163, 0.18);
+}
+
+.playlist-info h3 {
+  color: #f5ead4;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.playlist-info p {
+  max-width: 240px;
+  color: #b9a77c;
+  font-size: 14px;
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+
+.playlist-play-btn {
+  height: 38px;
+  padding: 0 24px;
+  border: 1px solid rgba(244, 217, 163, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.045);
+  color: #f5ead4;
+  cursor: pointer;
+}
+
+.playlist-tracks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 34px;
+  row-gap: 8px;
+}
+
+.playlist-track {
+  display: grid;
+  grid-template-columns: 36px 1fr 90px 48px;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(244, 217, 163, 0.08);
+}
+
+.playlist-track-id {
+  color: #9d927f;
+}
+
+.playlist-track strong {
+  color: #f5ead4;
+  font-size: 14px;
+}
+
+.playlist-track span {
+  color: #9d927f;
+  font-size: 13px;
+}
+
+.playlist-track em {
+  color: #c9b88f;
+  font-size: 13px;
+  font-style: normal;
+  text-align: right;
+}
+
+/* 右侧唱片装饰 */
+.vinyl-box {
+  position: relative;
+  height: 132px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.vinyl-record {
+  position: absolute;
+  right: -34px;
+  width: 176px;
+  height: 176px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #e6c47e 0 12%, #191919 13% 28%, #050505 29% 100%);
+  border: 1px solid rgba(244, 217, 163, 0.22);
+  box-shadow: inset 0 0 0 8px rgba(255, 255, 255, 0.02);
+}
+
+.vinyl-record::before {
+  content: '';
+  position: absolute;
+  inset: 22px;
+  border-radius: 50%;
+  border: 1px solid rgba(244, 217, 163, 0.13);
+}
+
+.vinyl-record::after {
+  content: '';
+  position: absolute;
+  inset: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(244, 217, 163, 0.1);
+}
+
+.vinyl-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #f7e7c0, #c79f5b);
+  color: #15110a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Footer */
+.site-footer {
+  margin-top: 24px;
+  border-top: 1px solid rgba(244, 217, 163, 0.12);
+  display: grid;
+  grid-template-columns: 1.1fr 1.2fr 1fr 1fr 1.8fr;
+  gap: 28px;
+  padding: 24px 26px 8px;
+  color: #9d927f;
+}
+
+.footer-logo {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 32px;
+  letter-spacing: 3px;
+  color: #f4d9a3;
+}
+
+.footer-brand p {
+  margin-top: 4px;
+  color: #b9a77c;
+  letter-spacing: 3px;
+  font-size: 13px;
+}
+
+.footer-quote {
+  border-left: 1px solid rgba(244, 217, 163, 0.14);
+  padding-left: 24px;
+}
+
+.footer-quote p {
+  color: #d9c9aa;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+.footer-quote span {
+  color: #c79f5b;
+  font-size: 13px;
+}
+
+.footer-links,
+.footer-social,
+.footer-disclaimer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.site-footer h4 {
+  color: #c79f5b;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.site-footer a {
+  color: #9d927f;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: #f4d9a3;
+}
+
+.social-icons {
+  display: flex;
+  gap: 16px;
+  color: #f5ead4;
+  font-size: 20px;
+}
+
+.footer-disclaimer p {
+  max-width: 360px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* Featured Playlist 和 Footer 响应式 */
+@media (max-width: 1200px) {
+  .playlist-card {
+    grid-template-columns: 1fr;
+  }
+
+  .playlist-left {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  .vinyl-box {
+    display: none;
+  }
+
+  .site-footer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .playlist-tracks {
+    grid-template-columns: 1fr;
+  }
+
+  .playlist-track {
+    grid-template-columns: 32px 1fr 52px;
+  }
+
+  .playlist-track span:not(.playlist-track-id) {
+    display: none;
+  }
+
+  .site-footer {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 /* 响应式 */
 @media (max-width: 1200px) {
