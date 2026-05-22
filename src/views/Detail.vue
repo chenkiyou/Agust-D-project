@@ -490,7 +490,7 @@ const relatedWorks = computed(() => {
 .cover-panel {
   position: relative;
   overflow: hidden;
-  min-height: 470px;
+  min-height: 430px;
 }
 
 .cover-panel img {
@@ -812,10 +812,10 @@ const relatedWorks = computed(() => {
   .detail-content {
     padding: 30px;
   }
-
-  .detail-content h1 {
-    font-size: 52px;
-  }
+  
+    .detail-content h1 {
+    font-size: 64px;
+    }
 }
 
 @media (max-width: 620px) {
