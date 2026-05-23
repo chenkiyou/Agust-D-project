@@ -6,13 +6,20 @@
         <div class="logo-title">AGUST D</div>
         <div class="logo-subtitle">fan project archive</div>
       </div>
+    <nav class="nav-menu">
+      <router-link class="nav-item" to="/">Home</router-link>
+      <router-link class="nav-item" to="/works">Works</router-link>
+      <router-link class="nav-item" to="/favorites">Favorites</router-link>
+      <router-link class="nav-item" to="/community">Community</router-link>
 
-      <nav class="nav-menu">
-        <router-link class="nav-item" to="/">Home</router-link>
-        <router-link class="nav-item" to="/works">Works</router-link>
-        <router-link class="nav-item active" to="/favorites">Favorites</router-link>
-        <router-link class="nav-item" to="/community">Community</router-link>
-      </nav>
+      <router-link
+        v-if="currentUser && currentUser.role === 'admin'"
+        class="nav-item"
+        to="/admin"
+      >
+        Admin
+      </router-link>
+    </nav>
 
       <div class="header-actions">
         <div class="top-search">

@@ -11,7 +11,15 @@
         <router-link class="nav-item" to="/">Home</router-link>
         <router-link class="nav-item" to="/works">Works</router-link>
         <router-link class="nav-item" to="/favorites">Favorites</router-link>
-        <router-link class="nav-item active" to="/community">Community</router-link>
+        <router-link class="nav-item" to="/community">Community</router-link>
+
+        <router-link
+          v-if="currentUser && currentUser.role === 'admin'"
+          class="nav-item"
+          to="/admin"
+        >
+          Admin
+        </router-link>
       </nav>
 
       <div class="header-actions">
