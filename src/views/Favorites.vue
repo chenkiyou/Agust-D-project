@@ -85,131 +85,19 @@
 </template>
 
 <script setup>
+import { works } from '../data/works'
 import AppHeader from '../components/AppHeader.vue'
 import { computed, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-import albumDday from '../assets/images/album-dday.png'
-import albumAgustd from '../assets/images/album-agustd.png'
-import albumD2 from '../assets/images/album-d2.png'
-import albumTour from '../assets/images/album-tour-archive.png'
 
-import trackHaegeum from '../assets/images/track-haegeum.png'
-import trackDaechwita from '../assets/images/track-daechwita.png'
-import trackPeople from '../assets/images/track-people-pt2.png'
-import trackAmygdala from '../assets/images/track-amygdala.png'
 
 const router = useRouter()
 
 const currentUser = ref(null)
 const favoriteIds = ref([])
 
-const works = [
-  {
-    id: 1,
-    title: 'D-DAY',
-    artist: 'Agust D',
-    year: 2023,
-    type: 'Solo Work',
-    category: 'Solo Work',
-    mood: 'Energetic',
-    plays: '12.4M',
-    rating: '4.9',
-    cover: albumDday,
-    description: 'A powerful album archive with intense sound and storytelling.',
-  },
-  {
-    id: 2,
-    title: 'Agust D',
-    artist: 'Agust D',
-    year: 2016,
-    type: 'Mixtape',
-    category: 'Mixtape',
-    mood: 'Dark',
-    plays: '36.8M',
-    rating: '4.9',
-    cover: albumAgustd,
-    description: 'The beginning of the Agust D archive and personal narrative.',
-  },
-  {
-    id: 3,
-    title: 'D-2',
-    artist: 'Agust D',
-    year: 2020,
-    type: 'Mixtape',
-    category: 'Mixtape',
-    mood: 'Reflective',
-    plays: '28.7M',
-    rating: '4.8',
-    cover: albumD2,
-    description: 'A second chapter with sharp emotion and experimental sound.',
-  },
-  {
-    id: 4,
-    title: 'Agust D TOUR D-DAY',
-    artist: 'Agust D',
-    year: 2023,
-    type: 'Soundtrack',
-    category: 'Soundtrack',
-    mood: 'Energetic',
-    plays: '8.7M',
-    rating: '4.9',
-    cover: albumTour,
-    description: 'Live stage memories collected as a visual music archive.',
-  },
-  {
-    id: 5,
-    title: 'Haegeum',
-    artist: 'Agust D',
-    year: 2023,
-    type: 'Solo Work',
-    category: 'Solo Work',
-    mood: 'Energetic',
-    plays: '15.2M',
-    rating: '4.9',
-    cover: trackHaegeum,
-    description: 'A bold single blending tradition, rhythm, and freedom.',
-  },
-  {
-    id: 6,
-    title: 'Daechwita',
-    artist: 'Agust D',
-    year: 2020,
-    type: 'Solo Work',
-    category: 'Solo Work',
-    mood: 'Dark',
-    plays: '21.3M',
-    rating: '4.9',
-    cover: trackDaechwita,
-    description: 'A dramatic and iconic work with royal visual energy.',
-  },
-  {
-    id: 7,
-    title: 'People Pt.2',
-    artist: 'Agust D',
-    year: 2023,
-    type: 'Collaboration',
-    category: 'Collaboration',
-    mood: 'Chill',
-    plays: '17.6M',
-    rating: '4.8',
-    cover: trackPeople,
-    description: 'A reflective piece about people, distance, and memory.',
-  },
-  {
-    id: 8,
-    title: 'Amygdala',
-    artist: 'Agust D',
-    year: 2023,
-    type: 'Solo Work',
-    category: 'Solo Work',
-    mood: 'Reflective',
-    plays: '9.3M',
-    rating: '4.8',
-    cover: trackAmygdala,
-    description: 'A dark emotional work exploring memory, pain, and inner conflict.',
-  },
-]
+
 
 onMounted(() => {
   const savedUser = localStorage.getItem('agust_user')

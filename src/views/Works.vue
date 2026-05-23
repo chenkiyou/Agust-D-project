@@ -247,19 +247,12 @@
 </template>
 
 <script setup>
+import { works } from '../data/works'
 import AppHeader from '../components/AppHeader.vue'
 import { computed, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-import albumDday from '../assets/images/album-dday.png'
-import albumAgustd from '../assets/images/album-agustd.png'
-import albumD2 from '../assets/images/album-d2.png'
-import albumTour from '../assets/images/album-tour-archive.png'
 
-import trackHaegeum from '../assets/images/track-haegeum.png'
-import trackDaechwita from '../assets/images/track-daechwita.png'
-import trackPeople from '../assets/images/track-people-pt2.png'
-import trackAmygdala from '../assets/images/track-amygdala.png'
 
 const searchKeyword = ref('')
 const activeCategory = ref('All')
@@ -290,112 +283,6 @@ function handleLogout() {
   localStorage.removeItem('agust_user')
   currentUser.value = null
 }
-const works = [
-  {
-    id: 1,
-    title: 'D-DAY',
-    artist: 'Agust D',
-    year: 2023,
-    type: 'Solo Work',
-    category: 'Solo Work',
-    mood: 'Energetic',
-    plays: '12.4M',
-    playsValue: 12.4,
-    rating: '4.9',
-    cover: albumDday,
-  },
-  {
-    id: 2,
-    title: 'Agust D',
-    artist: 'Agust D',
-    year: 2016,
-    type: 'Mixtape',
-    category: 'Mixtape',
-    mood: 'Dark',
-    plays: '36.8M',
-    playsValue: 36.8,
-    rating: '4.9',
-    cover: albumAgustd,
-  },
-  {
-    id: 3,
-    title: 'D-2',
-    artist: 'Agust D',
-    year: 2020,
-    type: 'Mixtape',
-    category: 'Mixtape',
-    mood: 'Reflective',
-    plays: '28.7M',
-    playsValue: 28.7,
-    rating: '4.8',
-    cover: albumD2,
-  },
-  {
-    id: 4,
-    title: 'Agust D TOUR D-DAY',
-    artist: 'Agust D',
-    year: 2023,
-    type: 'Soundtrack',
-    category: 'Soundtrack',
-    mood: 'Energetic',
-    plays: '8.7M',
-    playsValue: 8.7,
-    rating: '4.9',
-    cover: albumTour,
-  },
-  {
-    id: 5,
-    title: 'Haegeum',
-    artist: 'Agust D',
-    year: 2023,
-    type: 'Solo Work',
-    category: 'Solo Work',
-    mood: 'Energetic',
-    plays: '15.2M',
-    playsValue: 15.2,
-    rating: '4.9',
-    cover: trackHaegeum,
-  },
-  {
-    id: 6,
-    title: 'Daechwita',
-    artist: 'Agust D',
-    year: 2020,
-    type: 'Solo Work',
-    category: 'Solo Work',
-    mood: 'Dark',
-    plays: '21.3M',
-    playsValue: 21.3,
-    rating: '4.9',
-    cover: trackDaechwita,
-  },
-  {
-    id: 7,
-    title: 'People Pt.2',
-    artist: 'Agust D',
-    year: 2023,
-    type: 'Collaboration',
-    category: 'Collaboration',
-    mood: 'Chill',
-    plays: '17.6M',
-    playsValue: 17.6,
-    rating: '4.8',
-    cover: trackPeople,
-  },
-  {
-    id: 8,
-    title: 'Amygdala',
-    artist: 'Agust D',
-    year: 2023,
-    type: 'Solo Work',
-    category: 'Solo Work',
-    mood: 'Reflective',
-    plays: '9.3M',
-    playsValue: 9.3,
-    rating: '4.8',
-    cover: trackAmygdala,
-  },
-]
 
 const filteredWorks = computed(() => {
   const keyword = searchKeyword.value.trim().toLowerCase()
