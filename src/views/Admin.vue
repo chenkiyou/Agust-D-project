@@ -16,13 +16,21 @@
           <div class="brand-subtitle">admin dashboard</div>
         </div>
 
-        <nav class="admin-menu">
-          <button class="active">Dashboard</button>
-          <button>Works Management</button>
-          <button>Community Posts</button>
-          <button>Users</button>
-          <button>Settings</button>
-        </nav>
+      <nav class="admin-menu">
+        <p class="menu-label">ADMIN</p>
+
+        <button class="active">Dashboard</button>
+        <button>Works Management</button>
+        <button>Community Posts</button>
+        <button>Users</button>
+        <button>Settings</button>
+
+        <p class="menu-label site-label">SITE</p>
+
+        <router-link class="admin-link" to="/">Back to Home</router-link>
+        <router-link class="admin-link" to="/works">Works Page</router-link>
+        <router-link class="admin-link" to="/community">Community</router-link>
+      </nav>
 
         <div class="admin-user">
           <div class="avatar">
@@ -606,6 +614,33 @@ function handleLogout() {
 
 .admin-menu button.active,
 .admin-menu button:hover {
+  background: rgba(244, 217, 163, 0.12);
+  color: #f5ead4;
+}
+
+.menu-label {
+  color: #c79f5b;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin: 6px 0 4px;
+}
+
+.site-label {
+  margin-top: 28px;
+}
+
+.admin-link {
+  height: 42px;
+  border-radius: 999px;
+  color: #b9a77c;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  font-size: 14px;
+}
+
+.admin-link:hover {
   background: rgba(244, 217, 163, 0.12);
   color: #f5ead4;
 }
